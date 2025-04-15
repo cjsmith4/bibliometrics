@@ -1,0 +1,20 @@
+
+# mkdocs.yml
+site_name: bibliometrics_1
+site_url: FILL OUT
+repo_url: https://github.com/cjsmith4/bibliometrics
+nav:
+  - Home: index.md
+  - workflows:
+    - main: bibliometrics_1/main.md
+  - bibliometrics_1:
+    - plotter: bibliometrics_1/plotter.md
+    - data: bibliometrics_1/data.md
+    - evaluate: bibliometrics_1/evaluate.md
+    - predict: bibliometrics_1/predict.md
+    - train: bibliometrics_1/utils.md
+theme: readthedocs
+plugins:
+  - mkdocstrings
+watch:
+  - .  # reload docs for any file changes
