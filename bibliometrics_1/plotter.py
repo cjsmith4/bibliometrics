@@ -5,8 +5,8 @@ import pandas as pd
 import streamlit as st
 import plotly.express as px
 import networkx as nx
-from bibliometrics.GUI.data import DataProcessor
-from bibliometrics.GUI.utils import NetworkBuilder
+from bibliometrics_1.data import DataProcessor
+from bibliometrics_1.utils import NetworkBuilder
 
 class Plotter:
     def render_line_graph(self):
