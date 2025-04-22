@@ -1,4 +1,5 @@
-#A place for data manipulation functionsfrom pathlib import Path
+#A place for data manipulation functions
+from pathlib import Path
 import datetime
 from io import BytesIO
 import re
