@@ -142,50 +142,8 @@ class CrossRefManager:
         else:
             st.warning("No publication data found for the provided DOIs.")
             return pd.DataFrame(columns=["journal_issn", "publication_date", "journal_name", "title", "doi", "author_names", "citation_count", "date_published"])
-    
-        progress_bar.empty()
-    
-        if publication_data:
-            return pd.DataFrame(publication_data)
-        else:
-            st.warning("No publication data found for the provided DOIs.")
-            return pd.DataFrame(columns=["journal_issn", "publication_date", "journal_name", "title", "doi", "author_names", "citation_count", "date_published"])
         
-class DataProcessor:
-    @staticmethod
-    def fetch_scopus_data(query):
-        """
-        Execute a Scopus query and return the results as a DataFrame.
-
-        Args:
-            query (str): The Scopus query string.
-
-        Returns:
-            pd.DataFrame: DataFrame containing Scopus search results.
-        """
-        try:
-            # Perform Scopus search using ScopusSearch from pybliometrics
-            search = ScopusSearch(query)
-            if not search.results:
-                return pd.DataFrame()  # Return an empty DataFrame if no results are found
-            
-            # Convert results to a DataFrame
-            df = pd.DataFrame(search.results)
-            
-            # Process and add relevant columns
-            if 'coverDate' in df.columns:
-                df['publication_date'] = pd.to_datetime(df['coverDate'], errors='coerce')
-            if 'publicationName' in df.columns:
-                df['journal_name'] = df['publicationName']
-            if 'issn' in df.columns:
-                df['journal_issn'] = df['issn']
-
-            return df
-        except Exception as e:
-            # Provide feedback for debugging or errors
-            st.error(f"Error executing Scopus query: {query}. {str(e)}")
-            return pd.DataFrame()  # Return an empty DataFrame on error
-        
+class DataProcessor:        
     @staticmethod
     @st.cache_data
     def load_data(file):
