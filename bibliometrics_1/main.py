@@ -3,10 +3,10 @@ from pathlib import Path
 import pandas as pd
 import streamlit as st
 import pygwalker as pyg
-from bibliometrics.GUI.data import DataProcessor, MetricsAppBase
-from bibliometrics.GUI.plotter import Plotter
-from bibliometrics.GUI.predict import QueryConverter
-from bibliometrics.GUI.utils import ConfigManager
+from bibliometrics_1.data import DataProcessor, MetricsAppBase
+from bibliometrics_1.plotter import Plotter
+from bibliometrics_1.predict import QueryConverter
+from bibliometrics_1.utils import ConfigManager
 
 
 class AdvancedMetricsApp(MetricsAppBase):
