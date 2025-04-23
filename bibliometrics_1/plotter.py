@@ -1,14 +1,17 @@
 from pathlib import Path
-import datetime
+from datetime import datetime
 from matplotlib import pyplot as plt
 import pandas as pd
 import streamlit as st
 import plotly.express as px
 import networkx as nx
-from bibliometrics_1.data import DataProcessor
-from bibliometrics_1.utils import NetworkBuilder
+from data import DataProcessor
+from utils import NetworkBuilder
 
 class Plotter:
+    def __init__(self):
+        self.current_year = datetime.now().year
+        
     def render_line_graph(self):
         """
         Render a line graph showing monthly publication trends over the last 5 years.
@@ -20,12 +23,12 @@ class Plotter:
             grouped_counts_last_5_years['Month'] = grouped_counts_last_5_years['Month'].astype(int)
 
             # Establish date range
-            min_date = datetime.datetime(
+            min_date = datetime(
                 grouped_counts_last_5_years['Year'].min(),
                 grouped_counts_last_5_years['Month'].min(),
                 1
             )
-            max_date = datetime.datetime(
+            max_date = datetime(
                 grouped_counts_last_5_years['Year'].max(),
                 grouped_counts_last_5_years['Month'].max(),
                 1
